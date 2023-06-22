@@ -4,6 +4,7 @@
     <router-link to="/about">About</router-link>
   </nav>
   <router-view />
+  <AppFooterView />
 </template>
 
 <style>
@@ -28,3 +29,6 @@ nav a.router-link-exact-active {
   color: #42b983;
 }
 </style>
+<script setup lang="ts">
+import AppFooterView from "@/views/AppFooterView.vue";
+</script>
