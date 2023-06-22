@@ -5,8 +5,8 @@ import StatusPageView from "@/views/StatusPageView.vue";
 const routes: Array<RouteRecordRaw> = [
   {
     path: "/",
-    name: "home",
-    component: HomeView,
+    name: "status",
+    component: StatusPageView,
   },
   {
     path: "/about",
@@ -18,9 +18,9 @@ const routes: Array<RouteRecordRaw> = [
       import(/* webpackChunkName: "about" */ "../views/AboutView.vue"),
   },
   {
-    path: "/status",
-    name: "status",
-    component: StatusPageView,
+    path: "/home",
+    name: "home",
+    component: HomeView,
   },
 ];
 
