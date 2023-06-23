@@ -15,7 +15,11 @@ export default defineComponent({
   },
   methods: {
     convertData(gridData: GridData) {
-      console.log(gridData);
+      for (const row of [2, 3]) {
+        for (const col of [2, 3, 4, 5, 6]) {
+          console.log(gridData[row][col].selection);
+        }
+      }
     },
   },
 });
