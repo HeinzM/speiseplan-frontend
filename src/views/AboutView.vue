@@ -1,5 +1,9 @@
 <template>
   <div class="about">
-    <h1>This is an about page</h1>
+    <ul>
+      <li>Einfach online</li>
+      <li>kein oller Zettel mehr</li>
+      <li>hab ich selbst gemacht</li>
+    </ul>
   </div>
 </template>

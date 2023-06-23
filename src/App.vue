@@ -1,8 +1,8 @@
 <template>
+  <h2>Essensbestell&uuml;bersicht</h2>
   <nav>
     <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link> |
-    <router-link to="/home">HomeView</router-link>
+    <router-link to="/about">About</router-link>
   </nav>
   <router-view />
   <AppFooterView />
@@ -18,7 +18,8 @@
 }
 
 nav {
-  padding: 30px;
+  padding-top: 10px;
+  padding-bottom: 30px;
 }
 
 nav a {
