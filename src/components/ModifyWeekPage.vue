@@ -10,20 +10,27 @@
       <div class="col-lg-2 col-md-6">Freitag</div>
     </div>
     <div class="row">
-      <div class="col-lg-2 col-md-6">Mittag</div>
-      <div class="col-lg-2 col-md-6"></div>
-      <div class="col-lg-2 col-md-6"></div>
-      <div class="col-lg-2 col-md-6"></div>
-      <div class="col-lg-2 col-md-6"></div>
-      <div class="col-lg-2 col-md-6"></div>
-    </div>
-    <div class="row">
-      <div class="col-lg-2 col-md-6">Vesper</div>
-      <div class="col-lg-2 col-md-6"></div>
-      <div class="col-lg-2 col-md-6"></div>
-      <div class="col-lg-2 col-md-6"></div>
-      <div class="col-lg-2 col-md-6"></div>
-      <div class="col-lg-2 col-md-6"></div>
+      <div v-for="row in gridRows" :key="row" class="row">
+        <div v-if="row === 2" class="col-lg-2 col-md-6">Mittag</div>
+        <div v-else-if="row === 3" class="col-lg-2 col-md-6">Vesper</div>
+        <div v-for="col in gridColumns" :key="col" class="col-lg-2 col-md-6">
+          <div class="form-group">
+            <select
+              :id="'select-' + row + '-' + col"
+              class="form-control"
+              v-model="gridData[row][col].selection"
+            >
+              <option
+                v-for="option in selectOptions"
+                :key="option.value"
+                :value="option.value"
+              >
+                {{ option.text }}
+              </option>
+            </select>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
   <div class="mt-3">
@@ -39,6 +46,7 @@
 <script lang="ts">
 import { defineComponent, reactive } from "vue";
 import { GridData } from "@/interfaces/griddata";
+import router from "@/router";
 
 export default defineComponent({
   name: "ModifyweekPage",
@@ -75,7 +83,18 @@ export default defineComponent({
       }
     },
     submitData() {
+      const mappedData: GridData = {};
+      for (const row of this.gridRows) {
+        mappedData[row] = {};
+        for (const col of this.gridColumns) {
+          mappedData[row][col] = {
+            selection: this.gridData[row][col].selection.valueOf(),
+          };
+        }
+      }
+      console.log(mappedData);
       this.$emit("dataSubmitted", this.gridData);
+      router.push("/");
     },
     resetData() {
       this.initializeGridData();
